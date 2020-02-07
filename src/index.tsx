@@ -16,6 +16,11 @@ import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 import AppHeader from './components/AppHeader';
 import VenueCard from './components/VenueCard';
+import DrawerContent from './components/DrawerContent';
+
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+const Drawer = createDrawerNavigator();
 
 const theme = {
   ...DefaultTheme,
@@ -36,24 +41,32 @@ const theme = {
   // },
 };
 
+const HomeScreen = ({ navigation }) => (
+  <>
+    <StatusBar barStyle="light-content" />
+    <SafeAreaView style={{ backgroundColor: theme.colors.primary }}>
+      <AppHeader navigation={navigation} />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={{ backgroundColor: 'white' }}>
+        <View style={{ margin: 16 }}>
+          <VenueCard />
+          <VenueCard />
+          <VenueCard />
+          <VenueCard />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  </>
+);
+
 const App = () => {
   return (
     <PaperProvider theme={theme}>
       <NavigationNativeContainer>
-        <StatusBar barStyle="light-content" />
-        <SafeAreaView style={{ backgroundColor: theme.colors.primary }}>
-          <AppHeader />
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={{ backgroundColor: 'white' }}>
-            <View style={{ margin: 16 }}>
-              <VenueCard />
-              <VenueCard />
-              <VenueCard />
-              <VenueCard />
-            </View>
-          </ScrollView>
-        </SafeAreaView>
+        <Drawer.Navigator initialRouteName="Draw" drawerContent={DrawerContent}>
+          <Drawer.Screen name="Home" component={HomeScreen} />
+        </Drawer.Navigator>
       </NavigationNativeContainer>
     </PaperProvider>
   );

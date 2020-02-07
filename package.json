@@ -14,6 +14,7 @@
     "@emotion/native": "^10.0.27",
     "@react-native-community/masked-view": "^0.1.6",
     "@react-native-firebase/app": "^6.2.0",
+    "@react-navigation/drawer": "^5.0.0",
     "@react-navigation/native": "^5.0.0-alpha.29",
     "mem": "^4.3.0",
     "overmind": "^21.0.0",

@@ -1,6 +1,11 @@
 import * as React from 'react';
-
+import { Alert } from 'react-native';
 import { Headline, Paragraph, Card, Button } from 'react-native-paper';
+
+const notReady = () =>
+  Alert.alert('Not Ready', 'This feature is in progress', [
+    { text: "Fine I'll wait" },
+  ]);
 
 const VenueCard = () => (
   <>
@@ -20,8 +25,13 @@ const VenueCard = () => (
         </Paragraph>
       </Card.Content>
       <Card.Actions>
-        <Button icon="calendar-plus">Book</Button>
-        <Button icon="bookmark-plus-outline" style={{ marginLeft: 'auto' }}>
+        <Button icon="calendar-plus" onPress={notReady}>
+          Book
+        </Button>
+        <Button
+          icon="bookmark-plus-outline"
+          style={{ marginLeft: 'auto' }}
+          onPress={notReady}>
           Save
         </Button>
       </Card.Actions>
